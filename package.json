@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",
-    "start": "nx serve",
+    "start": "nx run-many --target=serve --projects=data-flow,api",
     "build": "nx build",
     "test": "nx test"
   },
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~14.1.1",
     "@angular/platform-browser-dynamic": "~14.1.1",
     "@angular/router": "~14.1.1",
+    "@automapper/classes": "^8.7.5",
+    "@automapper/core": "^8.7.5",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
@@ -50,6 +52,7 @@
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "autoprefixer": "^10.4.0",
     "cypress": "^10.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
@@ -57,7 +60,9 @@
     "jest": "27.5.1",
     "jest-preset-angular": "~11.1.2",
     "nx": "14.5.4",
+    "postcss": "^8.4.5",
     "prettier": "^2.6.2",
+    "tailwindcss": "^3.0.2",
     "ts-jest": "27.1.4",
     "ts-node": "~10.8.0",
     "typescript": "~4.7.2"

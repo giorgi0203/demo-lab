@@ -1,9 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@demo-lab/api-interfaces';
+import { ApiUserDto, Message } from '@demo-lab/api-interfaces';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: 'Welcome to api!' };
+  getData(): ApiUserDto {
+    const userData: ApiUserDto = {
+      age: 30,
+      id: null,
+      name: 'John Doe',
+      password: '123456',
+      username: 'johndoe'
+    }
+    return userData;
   }
 }
