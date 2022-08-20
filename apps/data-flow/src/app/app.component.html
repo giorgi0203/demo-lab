@@ -1,25 +1,70 @@
 <main class="w-screen h-screen flex flex-col justify-center items-center">
-  <form *ngIf="form" class="w-80 flex flex-col" [formGroup]="form">
-    <input class="p-4 m-5 shadow-md" type="text" formControlName="name" />
-    <div
-      class="error"
-      *ngIf="form.controls.name.invalid && form.controls.name.touched"
-    >
-      {{ form.controls.name.errors | json }}
-    </div>
-    <input class="p-4 m-5 shadow-sm" type="text" formControlName="username" />
-    <div
-      class="error"
-      *ngIf="form.controls.username.invalid && form.controls.username.touched"
-    >
-      {{ form.controls.username.errors | json }}
-    </div>
-    <input class="p-4 m-5 shadow-sm" type="number" formControlName="age" />
-    <div
-      class="error"
-      *ngIf="form.controls.age.invalid && form.controls.age.touched"
-    >
-      {{ form.controls.age.errors | json }}
+  <form *ngIf="form" class="w-full flex flex-col" [formGroup]="form">
+    <div class="w-full flex flex-col">
+      <div class="p-4 ">
+        <p>Name</p>
+        <input class="p-4 my-5 shadow-md" type="text" formControlName="name" />
+        <div
+          class="error"
+          *ngIf="form.controls.name.invalid && form.controls.name.touched"
+        >
+          {{ form.controls.name.errors | json }}
+        </div>
+      </div>
+      <div class="p-4 ">
+        <p>User name</p>
+        <input
+          class="p-4 my-5 shadow-sm"
+          type="text"
+          formControlName="username"
+        />
+        <div
+          class="error"
+          *ngIf="
+            form.controls.username.invalid && form.controls.username.touched
+          "
+        >
+          {{ form.controls.username.errors | json }}
+        </div>
+      </div>
+      <div class="p-4 ">
+        <p>Age</p>
+        <input class="p-4 my-5 shadow-sm" type="number" formControlName="age" />
+        <div
+          class="error"
+          *ngIf="form.controls.age.invalid && form.controls.age.touched"
+        >
+          {{ form.controls.age.errors | json }}
+        </div>
+      </div>
+      <div class="w-full flex flex-wrap" formArrayName="accounts">
+        <div *ngFor="let item of form.controls.accounts?.controls">
+          <div [formGroup]="item">
+            <input
+              class="p-4 m-5 shadow-sm"
+              type="text"
+              formControlName="name"
+            />
+            <div
+              class="error"
+              *ngIf="item.controls.name.invalid && item.controls.name.touched"
+            >
+              {{ item.controls.name.errors | json }}
+            </div>
+            <input
+              class="p-4 m-5 shadow-sm"
+              type="text"
+              formControlName="iban"
+            />
+            <div
+              class="error"
+              *ngIf="item.controls.iban.invalid && item.controls.iban.touched"
+            >
+              {{ item.controls.iban.errors | json }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
   <div class="flex">

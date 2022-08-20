@@ -1,20 +1,19 @@
-import { FormControl } from "@angular/forms";
+import { FormArray, FormControl, FormGroup } from "@angular/forms";
 import { AutoMap } from "@automapper/classes";
+import { UserFormAccountDto } from "./account-models/account-form.model";
 
-export class UserDto {
+export class UserFormDto {
     @AutoMap()
-    id?: FormControl<number>;
+    id!: FormControl<number>;
     @AutoMap()
-    name: FormControl<string>
+    name!: FormControl<string>
     @AutoMap()
-    username: FormControl<string>
+    username!: FormControl<string>
     @AutoMap()
-    age: FormControl<number>;
+    age!: FormControl<number>;
 
-    constructor(id: number, name: string, username: string, age: number) {
-        this.id = new FormControl(id, { nonNullable: true });
-        this.name = new FormControl(name, { nonNullable: true });
-        this.username = new FormControl(username, { nonNullable: true });
-        this.age = new FormControl(age, { nonNullable: true });
-    }
+    @AutoMap()
+    accounts?: FormArray<FormGroup<UserFormAccountDto>>;
+
 }
+
