@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiUserDto, Message } from '@demo-lab/api-interfaces';
 import { MapperService } from './services/mapper/mapper.service';
 import { UserHttpDto } from './models/user-http-dto.model';
-import { UserFormDto } from './models/user-form.model';
+import { configureUserFormMapper, UserFormDto } from './models/user-form.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'demo-lab-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    console.log();
+    configureUserFormMapper()
 
   }
 
