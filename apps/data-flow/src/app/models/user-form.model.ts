@@ -6,23 +6,22 @@ import { UserFormAccountDto } from "./account-models/account-form.model";
 import { UserFormBankInfoDto } from "./account-models/bank-info.model";
 import { UserHttpDto } from "./user-http-dto.model";
 
-export class UserFormDto {
+function setupMapper(mappingConfigurator: any) {
+    // // eslint-disable-next-line prefer-rest-params
+    // console.log({ arguments }, { arg });
 
-    @AutoMap()
-    id!: FormControl<number>;
-    @AutoMap()
-    name!: FormControl<string>
-    @AutoMap()
-    username!: FormControl<string>
-    @AutoMap()
-    age!: FormControl<number>;
+    return (ctor: any) => {
+        const mapper = mappingConfigurator();
+        console.log(mapper);
 
-    @AutoMap()
-    accounts?: FormArray<FormGroup<UserFormAccountDto>>;
+    }
+
 }
 
-export function configureUserFormMapper() {
-    createMap(MapperService.getMapper(),
+
+
+@setupMapper(() => {
+    return createMap(MapperService.getMapper(),
         UserHttpDto,
         UserFormDto,
         typeConverter(Number, FormControl<number>, (value) => new FormControl(value, { nonNullable: true, validators: [Validators.required] })),
@@ -48,5 +47,20 @@ export function configureUserFormMapper() {
             mapFrom((source) => new FormControl(source.age, { nonNullable: true, validators: [Validators.min(31)] })),
         )
     );
+})
+export class UserFormDto {
+
+    @AutoMap()
+    id!: FormControl<number>;
+    @AutoMap()
+    name!: FormControl<string>
+    @AutoMap()
+    username!: FormControl<string>
+    @AutoMap()
+    age!: FormControl<number>;
+
+    @AutoMap()
+    accounts?: FormArray<FormGroup<UserFormAccountDto>>;
 }
+
 

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ApiUserDto, Message } from '@demo-lab/api-interfaces';
 import { MapperService } from './services/mapper/mapper.service';
 import { UserHttpDto } from './models/user-http-dto.model';
-import { configureUserFormMapper, UserFormDto } from './models/user-form.model';
+import { UserFormDto } from './models/user-form.model';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'demo-lab-root',
@@ -17,24 +17,22 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient, public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    configureUserFormMapper()
-
+    console.log('init');
   }
 
 
   submitForm() {
-    // this.http.get<UserHttpDto>('/api/getUser').subscribe(user => {
-    //   const dto = MapperService.getMapper().map(user, UserHttpDto, UserDto);
-    //   this.form = this.fb.group<UserDto>(dto);
-    //   console.log(dto, this.form);
+    const formValue = this.form.value;
+    // const mappedUser = MapperService.getMapper().map(formValue, UserHttpDto,UserFormDto);
+    console.log({ formValue });
 
-    // })
   }
   fetchForm() {
-    this.http.get<UserHttpDto>('/api/getUser').subscribe(user => {
-      const dto = MapperService.getMapper().map(user, UserHttpDto, UserFormDto);
-      this.form = this.fb.group<UserFormDto>(dto);
-      console.log({ dto }, { user }, { form: this.form.value });
+    this.http.get<UserHttpDto>('/api/getUser').subscribe(fetchedUser => {
+      const mappedUser = MapperService.getMapper().map(fetchedUser, UserHttpDto, UserFormDto);
+      this.form = this.fb.group<UserFormDto>(mappedUser);
+      console.log({ mappedUser }, { fetchedUser },);
+      console.log({ formValue: this.form.value });
 
     })
   }
