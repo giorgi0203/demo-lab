@@ -2,4 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: TBCX;
+    font-weight: 400;
+    src: url(./assets/TBCXWebfonts/TBCXRegular.woff2) format("woff2"),
+        url(./assets/TBCXWebfonts/TBCXRegular.woff) format("woff");
+}
+
+@font-face {
+    font-family: TBCX;
+    font-weight: 700;
+    src: url(./assets/TBCXBold.6db5e61d.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: TBCX;
+    font-weight: 500;
+    src: url(./assets/TBCXWebfonts/TBCXMedium.woff2) format("woff2"),
+        url(./assets/TBCXWebfonts/TBCXMedium.woff) format("woff");
+}
+
+@font-face {
+    font-family: TBCX;
+    font-weight: 900;
+    src: url(./assets/TBCXWebfonts/TBCXBlack.woff2) format("woff2"),
+        url(./assets/TBCXWebfonts/TBCXBlack.woff) format("woff");
+}
+
+* {
+    font-family: TBCX;
+    font-weight: 400;
+}
+
+.bla {
+    @apply w-2;
+}
 /* You can add global styles to this file, and also import other style files */

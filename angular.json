@@ -5,6 +5,8 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "data-flow": "apps/data-flow",
-    "data-flow-e2e": "apps/data-flow-e2e"
+    "data-flow-e2e": "apps/data-flow-e2e",
+    "react-demo": "apps/react-demo",
+    "react-demo-e2e": "apps/react-demo-e2e"
   }
 }
